@@ -5,3 +5,5 @@ const newProcess = child_process.spawn("node", ["computation/fibonacci.js"], {
   stdio: "inherit",
 });
 console.log("2: End");
+
+// creating a non blocking code in javascript

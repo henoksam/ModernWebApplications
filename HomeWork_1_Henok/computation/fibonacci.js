@@ -6,4 +6,4 @@ const fib = function (number) {
   }
 };
 
-console.log("Fibonacci of 45 is: " + fib(45));
+console.log("Fibonacci of 42 is: " + fib(42));
