@@ -48,4 +48,20 @@ function TeamsController(TeamFactory, $location) {
       vm.teams = response;
     });
   };
+
+  vm.searchTeam = function (team) {
+    TeamFactory.searchOneTeam(team).then(function (response) {
+      alert("Searched for: " + team.toString());
+      vm.teams = response;
+      vm.activated = true;
+    });
+  };
+
+  vm.clearSearch = function () {
+    TeamFactory.getTenTeams(0, 3).then(function (response) {
+      vm.teams = response;
+      vm.activated = false;
+      vm.random = "";
+    });
+  };
 }

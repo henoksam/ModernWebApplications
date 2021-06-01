@@ -2,27 +2,44 @@ const mongoose = require("mongoose");
 const Team = mongoose.model("Team");
 
 module.exports.teamsGetAll = function (req, res) {
-  console.log("JSON Request Received");
-  if (req.query && req.query.offset) {
-    var offset = parseInt(req.query.offset); // default = 0
-  }
-  if (req.query && req.query.count) {
-    var count = parseInt(req.query.count); // default = 1
-  }
+  if (req.query && req.query.team) {
+    const teamTitle = req.query.team;
 
-  Team.find()
-    .skip(offset)
-    .limit(count)
-    .exec(function (err, teams) {
+    const query = {
+      title: { $regex: new RegExp(`^${teamTitle}$`), $options: "i" },
+    };
+
+    Team.find(query).exec(function (err, teams) {
       //error check from the server
       if (err) {
         console.log("Error finding teams");
         res.status(500).json(err);
       } else {
         console.log("Found teams", teams);
-        res.status(200).json(teams);
+        res.json(teams);
       }
     });
+  } else {
+    if (req.query && req.query.offset) {
+      var offset = parseInt(req.query.offset); // default = 0
+    }
+    if (req.query && req.query.count) {
+      var count = parseInt(req.query.count); // default = 1
+    }
+    Team.find()
+      .skip(offset)
+      .limit(count)
+      .exec(function (err, teams) {
+        //error check from the server
+        if (err) {
+          console.log("Error finding teams");
+          res.status(500).json(err);
+        } else {
+          console.log("Found teams", teams);
+          res.status(200).json(teams);
+        }
+      });
+  }
 };
 
 module.exports.getTeamById = function (req, res) {

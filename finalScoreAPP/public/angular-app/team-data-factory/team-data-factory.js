@@ -6,6 +6,7 @@ function TeamFactory($http) {
     getOneTeam: getOneTeam,
     addOneTeam: addOneTeam,
     deleteOneTeam: deleteOneTeam,
+    searchOneTeam: searchOneTeam,
   };
   function getTenTeams(offset, count) {
     return $http
@@ -17,6 +18,13 @@ function TeamFactory($http) {
     //let teamId = $routeParams.id;
     return $http
       .get("/api/teams/" + id)
+      .then(complete)
+      .catch(failed);
+  }
+
+  function searchOneTeam(team) {
+    return $http
+      .get("/api/teams?team=" + team)
       .then(complete)
       .catch(failed);
   }
