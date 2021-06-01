@@ -7,6 +7,15 @@
     <!-- used uppercase filter -->
   </li>
 </ul>
+
+<button ng-click="vm.previousPage()" type="button" class="btn btn-primary">
+  Previous
+</button>
+<button ng-click="vm.nextPage()" type="button" class="btn btn-primary">
+  Next
+</button>
+<br />
+
 <div ng-if="vm.isLoggedIn()">
   <form name="vm.gameForm" ng-submit="vm.addGame()">
     To add a new game please fill in all the fields below:<br />

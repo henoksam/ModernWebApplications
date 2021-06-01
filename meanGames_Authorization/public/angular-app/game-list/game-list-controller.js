@@ -46,4 +46,11 @@ function GamesController(GameFactory, AuthFactory, $location, $route) {
       vm.games = response;
     });
   };
+
+  vm.previousPage = function () {
+    if (offset != 0) offset -= 2;
+    GameFactory.getTenGames(offset, count).then(function (response) {
+      vm.games = response;
+    });
+  };
 }
