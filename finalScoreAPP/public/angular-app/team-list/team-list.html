@@ -1,6 +1,24 @@
 <h1>{{vm.title}}</h1>
 <!-- <h1>{{vm.games}}</h1> -->
 
+br />
+<form name="vm.searchForm" ng-submit="vm.searchTeam()">
+  Search:
+  <input
+    type="text"
+    name="title"
+    ng-maxlength="15"
+    ng-model="vm.random"
+    style="color: black"
+  />
+  <button type="submit" ng-click="vm.searchTeam(vm.random)">search</button>
+  <button ng-if="vm.activated" type="button" ng-click="vm.clearSearch()">
+    Clear
+  </button>
+</form>
+
+<br />
+
 <ul>
   <li ng-repeat="team in vm.teams">
     <a ng-href="#!/teams/{{team._id}}/">{{team.name | uppercase}}</a>
