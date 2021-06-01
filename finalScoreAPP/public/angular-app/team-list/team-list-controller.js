@@ -3,6 +3,12 @@ angular.module("finalScore").controller("TeamsController", TeamsController);
 function TeamsController(TeamFactory) {
   const vm = this;
   vm.title = "Final Score App";
+
+  let offset = 0;
+  let count = 3;
+  var query = $location.search();
+  if (query.offset) offset = query.offset;
+  if (query.count) count = query.count;
   TeamFactory.getTenTeams().then(function (response) {
     vm.teams = response;
   });
