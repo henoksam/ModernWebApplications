@@ -37,8 +37,9 @@ function LoginController(
             $window.sessionStorage.token = response.token;
             AuthFactory.auth.isLoggedIn = true;
             const token = $window.sessionStorage.token;
-            const decodedToken = jwtHelper.decodedToken(token);
+            const decodedToken = jwtHelper.decodeToken(token);
             console.log(decodedToken);
+            console.log("This is the decoded Token Name: " + decodedToken.name);
             vm.loggedInUser = decodedToken.name;
             vm.username = "";
             vm.password = "";

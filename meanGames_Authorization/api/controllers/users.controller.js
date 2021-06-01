@@ -51,13 +51,9 @@ module.exports.usersAuthenticate = function (req, res) {
       } else {
         if (bcrypt.compareSync(req.body.password, user.password)) {
           console.log("User Authenticated");
-          const token = jwt.sign(
-            { name: user.name, userId: user._id },
-            "cs572",
-            {
-              expiresIn: 3600,
-            }
-          ); // token expires after one hour
+          const token = jwt.sign({ name: user.name }, "cs572", {
+            expiresIn: 3600,
+          }); // token expires after one hour
           response.message = { success: true, token: token };
         } else {
           console.log("Unauthorized");
