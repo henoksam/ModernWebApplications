@@ -53,4 +53,11 @@ function GamesController(GameFactory, AuthFactory, $location, $route) {
       vm.games = response;
     });
   };
+
+  vm.searchGame = function (game) {
+    GameFactory.searchOneGame(game).then(function (response) {
+      alert("Searched for: " + game.toString());
+      vm.games = response;
+    });
+  };
 }

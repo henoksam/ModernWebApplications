@@ -3,25 +3,44 @@ const Game = mongoose.model("Game");
 
 module.exports.gamesGetAll = function (req, res) {
   console.log("JSON Request Received");
-  if (req.query && req.query.offset) {
-    var offset = parseInt(req.query.offset); // default = 0
-  }
-  if (req.query && req.query.count) {
-    var count = parseInt(req.query.count); // default = 1
-  }
-  Game.find()
-    .skip(offset)
-    .limit(count)
-    .exec(function (err, games) {
+  if (req.query && req.query.game) {
+    const gameTitle = req.query.game;
+
+    const query = {
+      title: { $regex: new RegExp(`^${gameTitle}$`), $options: "i" },
+    };
+
+    Game.find(query).exec(function (err, games) {
       //error check from the server
       if (err) {
         console.log("Error finding games");
         res.status(500).json(err);
       } else {
         console.log("Found games", games);
-        res.status(200).json(games);
+        res.json(games);
       }
     });
+  } else {
+    if (req.query && req.query.offset) {
+      var offset = parseInt(req.query.offset); // default = 0
+    }
+    if (req.query && req.query.count) {
+      var count = parseInt(req.query.count); // default = 1
+    }
+    Game.find()
+      .skip(offset)
+      .limit(count)
+      .exec(function (err, games) {
+        //error check from the server
+        if (err) {
+          console.log("Error finding games");
+          res.status(500).json(err);
+        } else {
+          console.log("Found games", games);
+          res.status(200).json(games);
+        }
+      });
+  }
 };
 
 module.exports.getGameById = function (req, res) {

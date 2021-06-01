@@ -6,6 +6,7 @@ function GameFactory($http) {
     getOneGame: getOneGame,
     addOneGame: addOneGame,
     replaceOneGame: replaceOneGame,
+    searchOneGame: searchOneGame,
   };
   function getTenGames(offset, count) {
     return $http
@@ -17,6 +18,13 @@ function GameFactory($http) {
     //let gameId = $routeParams.id;
     return $http
       .get("/api/games/" + id)
+      .then(complete)
+      .catch(failed);
+  }
+
+  function searchOneGame(game) {
+    return $http
+      .get("/api/games?game=" + game)
       .then(complete)
       .catch(failed);
   }
