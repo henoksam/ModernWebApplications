@@ -1,0 +1,96 @@
+<h1>{{vm.title}}</h1>
+<!-- <h1>{{vm.games}}</h1> -->
+
+<ul>
+  <li ng-repeat="game in vm.games">
+    <a ng-href="#!/games/{{game._id}}/">{{game.title | uppercase}}</a>
+    <!-- used uppercase filter -->
+  </li>
+</ul>
+<div ng-if="vm.isLoggedIn()">
+  <form name="vm.gameForm" ng-submit="vm.addGame()">
+    To add a new game please fill in all the fields below:<br />
+
+    Title:
+    <input
+      type="text"
+      name="title"
+      required
+      ng-model="vm.newGameTitle"
+      style="color: black"
+    /><br />
+
+    Price:
+    <input
+      type="text"
+      name="price"
+      required
+      ng-model="vm.newGamePrice"
+      style="color: black"
+    /><br />
+
+    Year of Publication:
+    <input
+      type="text"
+      name="year"
+      required
+      ng-model="vm.newGameYear"
+      style="color: black"
+    /><br />
+
+    Rating:
+    <input
+      type="text"
+      name="rating"
+      required
+      ng-model="vm.newGameRating"
+      style="color: black"
+    /><br />
+
+    Minimum Number of Players:
+    <input
+      type="text"
+      name="minPlayers"
+      required
+      ng-model="vm.newGameMinPlayers"
+      style="color: black"
+    />
+
+    <span
+      ng-show="vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid && vm.gameForm.isSubmitted"
+      style="color: black"
+      >Minimum players must be at least 1.</span
+    >
+
+    <br />
+
+    Maximum Number of Players:
+    <input
+      type="text"
+      name="maxPlayers"
+      required
+      ng-model="vm.newGameMaxPlayers"
+      style="color: black"
+    /><br />
+
+    Minimum Recommended Player Age:
+    <input
+      type="text"
+      name="minAge"
+      required
+      ng-model="vm.newGameMinAge"
+      style="color: black"
+    /><br />
+
+    Designer name:
+    <input
+      type="text"
+      name="designer"
+      required
+      ng-model="vm.newGameDesigner"
+      style="color: black"
+    /><br />
+
+    <button type="submit" class="btn-success">Add Game</button><br />
+  </form>
+</div>

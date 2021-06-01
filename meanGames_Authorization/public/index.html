@@ -1,0 +1,49 @@
+<!DOCTYPE >
+<html ng-app="meanGames">
+  <head>
+    <title>MEAN Games</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <games-navigation></games-navigation>
+
+    <div class="container">
+      <div ng-view></div>
+    </div>
+
+    <!--     <h1>MEAN Games homepage</h1> -->
+    <footer>
+      <a href="https://www.miu.edu" target="_blank">
+        <img
+          src="images/compro-web-logo.webp"
+          alt="ComPro image"
+          width="300"
+          height="120"
+        />
+      </a>
+      <p class="text-center text-black-50">
+        &copy; Maharishi international university
+      </p>
+    </footer>
+
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="./angular-app/app.js"></script>
+    <script src="./angular-app/game-list/game-list-controller.js"></script>
+    <script src="./angular-app/game-one/game-one-controller.js"></script>
+    <script src="./angular-app/game-data-factory/game-data-factory.js"></script>
+    <script src="./angular-app/register/registerController.js"></script>
+    <script src="./angular-app/navigation-directive/navigation-directive.js"></script>
+    <script src="./angular-app/login/login-controller.js"></script>
+    <script src="./angular-app/authentication/auth-factory.js"></script>
+    <script src="./angular-app/user-data-factory/user-data-factory.js"></script>
+    <script src="../node_modules/angular-jwt/dist/angular-jwt.js"></script>
+  </body>
+</html>

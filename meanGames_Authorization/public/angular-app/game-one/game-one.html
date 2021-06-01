@@ -1,0 +1,49 @@
+<h1>
+  Information about game:
+  <p>{{vm.games.title}}</p>
+</h1>
+
+<p>
+  Price: {{vm.games.price | currency}} <br />
+  <!-- used currency filter -->
+  Minimum Players: {{vm.games.minPlayers}} <br />
+  Maximum Players: {{vm.games.maxPlayers}} <br />
+  Minimum Age: {{vm.games.minAge}}<br />
+  Publisher: {{vm.games.publisher.name}}
+</p>
+
+</br>
+
+<div ng-if="vm.isLoggedIn()">
+<form name="vm.updateGameForm" ng-submit="vm.updateGame()">
+  price: <input
+  type="text"
+  name="price"
+  required
+  ng-model="vm.editedGamePrice"
+  style="color: black"
+/><br />
+  Minimu Players: <input
+  type="text"
+  name="minPlayers"
+  required
+  ng-model="vm.editedGameMinPlayers"
+  style="color: black"
+/><br />
+  Maximum Players: <input
+  type="text"
+  name="maxPlayers"
+  required
+  ng-model="vm.editedGameMaxPlayers"
+  style="color: black"
+/> <br />
+  Minimum Age: <input
+  type="text"
+  name="minAge"
+  required
+  ng-model="vm.editedGameMinAge"
+  style="color: black"
+/><br />
+</form>
+
+</div>
