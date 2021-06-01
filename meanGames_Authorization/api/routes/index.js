@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const router = express.Router();
 const { gamesGetAll, getGameById } = require("../controllers/games.controller");
 const controllerGames = require("../controllers/games.controller");
@@ -23,9 +22,5 @@ router
 
 router.route("/users").post(controllerUsers.usersRegister);
 router.route("/auth").post(controllerUsers.usersAuthenticate);
-
-router.route("/file").get((req, res) => {
-  res.status(200).sendFile(path.join(__dirname, "..", "app-1.js"));
-});
 
 module.exports = router;
