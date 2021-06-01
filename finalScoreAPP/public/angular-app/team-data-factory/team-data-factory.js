@@ -7,8 +7,11 @@ function TeamFactory($http) {
     addOneTeam: addOneTeam,
     deleteOneTeam: deleteOneTeam,
   };
-  function getTenTeams() {
-    return $http.get("/api/teams").then(complete).catch(failed);
+  function getTenTeams(offset, count) {
+    return $http
+      .get("/api/teams?offset=" + offset + "&count=" + count)
+      .then(complete)
+      .catch(failed);
   }
   function getOneTeam(id) {
     //let teamId = $routeParams.id;

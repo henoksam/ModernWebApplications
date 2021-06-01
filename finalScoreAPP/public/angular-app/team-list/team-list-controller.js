@@ -1,6 +1,6 @@
 angular.module("finalScore").controller("TeamsController", TeamsController);
 
-function TeamsController(TeamFactory) {
+function TeamsController(TeamFactory, $location) {
   const vm = this;
   vm.title = "Final Score App";
 
@@ -9,7 +9,7 @@ function TeamsController(TeamFactory) {
   var query = $location.search();
   if (query.offset) offset = query.offset;
   if (query.count) count = query.count;
-  TeamFactory.getTenTeams().then(function (response) {
+  TeamFactory.getTenTeams(offset, count).then(function (response) {
     vm.teams = response;
   });
 
@@ -32,5 +32,20 @@ function TeamsController(TeamFactory) {
           console.log(error);
         });
     }
+  };
+
+  vm.nextPage = function () {
+    offset += count;
+
+    TeamFactory.getTenTeams(offset, count).then(function (response) {
+      vm.teams = response;
+    });
+  };
+
+  vm.previousPage = function () {
+    if (offset != 0) offset -= 2;
+    TeamFactory.getTenTeams(offset, count).then(function (response) {
+      vm.teams = response;
+    });
   };
 }

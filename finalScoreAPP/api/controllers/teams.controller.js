@@ -3,27 +3,11 @@ const Team = mongoose.model("Team");
 
 module.exports.teamsGetAll = function (req, res) {
   console.log("JSON Request Received");
-  const defaultOffset = 0;
-  const defaultCount = 10;
-  const maxCount = 20;
-  let offset = defaultOffset;
-  let count = defaultCount;
-  if (req.query.offset && req.query.count) {
-    offset = parseInt(req.query.offset);
-    count = parseInt(req.query.count);
+  if (req.query && req.query.offset) {
+    var offset = parseInt(req.query.offset); // default = 0
   }
-  //type check
-  if (isNaN(offset) || isNaN(count)) {
-    res.status(400).json({
-      message: "QueryString Offset and count should be numbers",
-    });
-  }
-
-  //limit check
-  if (count > maxCount) {
-    res.status(400).json({
-      message: "QueryString Offset and count can not exceed " + maxCount,
-    });
+  if (req.query && req.query.count) {
+    var count = parseInt(req.query.count); // default = 1
   }
 
   Team.find()
