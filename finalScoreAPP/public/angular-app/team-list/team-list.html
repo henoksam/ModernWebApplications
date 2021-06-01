@@ -1,0 +1,60 @@
+<h1>{{vm.title}}</h1>
+<!-- <h1>{{vm.games}}</h1> -->
+
+<ul>
+  <li ng-repeat="team in vm.teams">
+    <a ng-href="#!/teams/{{team._id}}/">{{team.name | uppercase}}</a>
+    <!-- used uppercase filter -->
+  </li>
+</ul>
+
+<form name="vm.teamForm" ng-submit="vm.addTeam()">
+  Fill the form below to add a team:<br />
+
+  Name:
+  <input
+    type="text"
+    name="name"
+    ngminlength="3"
+    ng-maxlength="15"
+    required
+    ng-model="vm.newTeamName"
+    style="color: black"
+  /><br />
+
+  Year Founded:
+  <input
+    type="text"
+    name="yearFounded"
+    required
+    ngpattern="/^[0-9]{4}$/"
+    ng-model="vm.newTeamYearFounded"
+    style="color: black"
+  /><br />
+
+  Counry:
+  <input
+    type="text"
+    name="country"
+    required
+    ng-model="vm.newTeamCountry"
+    style="color: black"
+  /><br />
+
+  Stadium:
+  <input
+    type="text"
+    name="stadium"
+    required
+    ng-model="vm.newTeamStadium"
+    style="color: black"
+  /><br />
+  <span
+    ng-show="vm.teamForm.name.$dirty &&
+    vm.teamForm.name.$invalid"
+  >
+    This feild requires 3-10 characters.
+  </span>
+
+  <button type="submit" class="btn-success">Add Team</button><br />
+</form>

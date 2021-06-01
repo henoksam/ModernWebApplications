@@ -1,0 +1,23 @@
+<h1>
+  Information about the Team
+  <p>{{vm.teams.name}}</p>
+</h1>
+
+<p>
+  Name: {{vm.teams.name}} <br />
+  Year Founded: {{vm.teams.yearFounded | date}} <br />   <!--  used date filter -->
+  Country: {{vm.teams.country}} <br />
+  Stadium: {{vm.teams.stadium.name}} <br />
+  <h2>Titles Won</h2> <br />
+  <!-- used currency filter -->
+  <ul>
+    <li ng-repeat="title in vm.teams.titles">
+      {{title.name | uppercase}}
+      <!-- used uppercase filter -->
+    </li>
+  </ul>
+  
+</p>
+
+<span> <button type="button" class="btn-success" ng-click="vm.deleteTeam(vm.teams._id)">Delete Team</button></span>
+
