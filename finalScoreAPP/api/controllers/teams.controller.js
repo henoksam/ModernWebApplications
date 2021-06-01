@@ -6,7 +6,7 @@ module.exports.teamsGetAll = function (req, res) {
     const teamTitle = req.query.team;
 
     const query = {
-      title: { $regex: new RegExp(`^${teamTitle}$`), $options: "i" },
+      name: { $regex: new RegExp(`^${teamTitle}$`), $options: "i" },
     };
 
     Team.find(query).exec(function (err, teams) {
