@@ -3,7 +3,8 @@ angular.module("meanGames").controller("GamesController", GamesController);
 function GamesController(GameFactory, AuthFactory, $location, $route) {
   const vm = this;
   vm.title = "Mean Games App";
-  /*   vm.isSubmitted = false; */
+  vm.activated = false;
+
   let offset = 0;
   let count = 3;
   var query = $location.search();
@@ -58,6 +59,15 @@ function GamesController(GameFactory, AuthFactory, $location, $route) {
     GameFactory.searchOneGame(game).then(function (response) {
       alert("Searched for: " + game.toString());
       vm.games = response;
+      vm.activated = true;
+    });
+  };
+
+  vm.clearSearch = function () {
+    GameFactory.getTenGames(0, 3).then(function (response) {
+      vm.games = response;
+      vm.activated = false;
+      vm.random = "";
     });
   };
 }

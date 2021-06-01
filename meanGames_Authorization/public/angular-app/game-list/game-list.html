@@ -12,8 +12,12 @@
     style="color: black"
   />
   <button type="submit" ng-click="vm.searchGame(vm.random)">search</button>
-  <br />
+  <button ng-if="vm.activated" type="button" ng-click="vm.clearSearch()">
+    Clear
+  </button>
 </form>
+
+<br />
 
 <ul>
   <li ng-repeat="game in vm.games">
