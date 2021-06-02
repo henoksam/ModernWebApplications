@@ -34,53 +34,55 @@
 </button>
 <br />
 
-<form name="vm.teamForm" ng-submit="vm.addTeam()">
-  Fill the form below to add a team:<br />
+<div ng-if="vm.isLoggedIn()">
+  <form name="vm.teamForm" ng-submit="vm.addTeam()">
+    Fill the form below to add a team:<br />
 
-  Name:
-  <input
-    type="text"
-    name="name"
-    ngminlength="3"
-    ng-maxlength="15"
-    required
-    ng-model="vm.newTeamName"
-    style="color: black"
-  /><br />
+    Name:
+    <input
+      type="text"
+      name="name"
+      ngminlength="3"
+      ng-maxlength="15"
+      required
+      ng-model="vm.newTeamName"
+      style="color: black"
+    /><br />
 
-  Year Founded:
-  <input
-    type="text"
-    name="yearFounded"
-    required
-    ngpattern="/^[0-9]{4}$/"
-    ng-model="vm.newTeamYearFounded"
-    style="color: black"
-  /><br />
+    Year Founded:
+    <input
+      type="text"
+      name="yearFounded"
+      required
+      ngpattern="/^[0-9]{4}$/"
+      ng-model="vm.newTeamYearFounded"
+      style="color: black"
+    /><br />
 
-  Counry:
-  <input
-    type="text"
-    name="country"
-    required
-    ng-model="vm.newTeamCountry"
-    style="color: black"
-  /><br />
+    Counry:
+    <input
+      type="text"
+      name="country"
+      required
+      ng-model="vm.newTeamCountry"
+      style="color: black"
+    /><br />
 
-  Stadium:
-  <input
-    type="text"
-    name="stadium"
-    required
-    ng-model="vm.newTeamStadium"
-    style="color: black"
-  /><br />
-  <span
-    ng-show="vm.teamForm.name.$dirty &&
+    Stadium:
+    <input
+      type="text"
+      name="stadium"
+      required
+      ng-model="vm.newTeamStadium"
+      style="color: black"
+    /><br />
+    <span
+      ng-show="vm.teamForm.name.$dirty &&
     vm.teamForm.name.$invalid"
-  >
-    This feild requires 3-10 characters.
-  </span>
+    >
+      This feild requires 3-10 characters.
+    </span>
 
-  <button type="submit" class="btn-success">Add Team</button><br />
-</form>
+    <button type="submit" class="btn-success">Add Team</button><br />
+  </form>
+</div>

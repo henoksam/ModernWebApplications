@@ -4,7 +4,7 @@ const router = express.Router();
 const controllerTeams = require("../controllers/teams.controller");
 const controllerStadium = require("../controllers/stadium.controller");
 const controllerTitles = require("../controllers/titles.controller");
-
+const controllerUsers = require("../controllers/users.controller");
 router
   .route("/teams/:id")
   .get(controllerTeams.getTeamById)
