@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 require("./teams-model");
+require("./users-model");
 const dbName = "finalScore";
 const dbURL = "mongodb://localhost:27017/" + dbName;
 
