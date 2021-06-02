@@ -32,4 +32,7 @@ router
   .delete(controllerTitles.deleteATitle)
   .put(controllerTitles.titleUpdate);
 
+router.route("/users").post(controllerUsers.usersRegister);
+router.route("/auth").post(controllerUsers.usersAuthenticate);
+
 module.exports = router;
