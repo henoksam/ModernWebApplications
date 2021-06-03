@@ -1,3 +1,13 @@
+const promise1 = function (number) {
+  return new Promise((resolve, reject) => {
+    if (number <= 2) {
+      resolve(1);
+    } else {
+      resolve(fib(number - 1) + fib(number - 2));
+    }
+  });
+};
+
 const fib = function (number) {
   if (number <= 2) {
     return 1;
@@ -14,4 +24,4 @@ function fail(response) {
   console.log("Error occured");
 }
 
-console.log("Fibonacci of 45 is: " + fib(45));
+promise1(30).then(complete).catch(fail);
