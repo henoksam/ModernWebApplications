@@ -1,0 +1,21 @@
+{
+  "name": "portlistener",
+  "version": "1.0.0",
+  "description": "This is my first express server",
+  "main": "portListener.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node portListener.js"
+  },
+  "keywords": [
+    "Express"
+  ],
+  "author": "Henok",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "mocha": "^8.4.0"
+  }
+}

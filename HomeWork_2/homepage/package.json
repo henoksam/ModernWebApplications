@@ -1,0 +1,21 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "This is my MEAN Games Appplication. Database driven application",
+  "main": "homepage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Mean",
+    "Board-Games",
+    "Data",
+    "Driven",
+    "Application"
+  ],
+  "author": "Henok",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
