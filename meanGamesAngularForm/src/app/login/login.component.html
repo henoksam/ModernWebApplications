@@ -1,0 +1,35 @@
+<div *ngIf="message" class="alert alert-success" role="alert">
+  <p>{{ message }}</p>
+</div>
+<div *ngIf="err" class="alert alert-danger" role="alert">
+  <p>{{ err }}</p>
+</div>
+<div *ngIf="!isLoggedIn()">
+  <form (submit)="login()">
+    <div class="form-group" ng-class="{ 'has-error': err }">
+      <input
+        type="text"
+        class="form-control input-sm"
+        placeholder="Username"
+        name="username"
+        [(ngModel)]="username"
+        autocapitalize="none"
+      />
+    </div>
+    <br />
+    <div class="form-group" ng-class="{ 'has-error': err }">
+      <input
+        type="password"
+        class="form-control input-sm"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+        autocapitalize="none"
+      />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-sm btn-success">Login</button>
+  </form>
+</div>
+
+<div *ngIf="isLoggedIn()">Hello {{ name }}</div>
